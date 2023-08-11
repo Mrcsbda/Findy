@@ -30,12 +30,32 @@
         flex-direction: column;
         align-items: center;
         gap: 0.5rem;
+        cursor: pointer;
+    }
+
+
+    &__avatar-container {
+        display: flex;
+        width: 4rem;
+        height: 4rem;
+        justify-content: center;
+        align-items: center;
+        position: relative;
     }
 
     &__avatar {
-        max-width: 5rem;
-        max-height: 4rem;
         object-fit: cover;
+        border-radius: 50%;
+    }
+
+    &__avatar-container::after {
+        content: "";
+        width: 4.3rem;
+        height: 4.3rem;
+        background: rgb(255, 118, 130);
+        background: linear-gradient(110deg, rgba(255, 118, 130, 1) 20%, rgba(255, 116, 183, 1) 40%, rgba(255, 116, 252, 1) 60%, rgba(255, 188, 116, 1) 80%);
+        position: absolute;
+        z-index: -1;
         border-radius: 50%;
     }
 

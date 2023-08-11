@@ -6,12 +6,11 @@ import './carrousel.scss';
 import { Pagination } from 'swiper/modules';
 
 const Carrousel = ({ infoHeader }) => {
-  console.log(infoHeader)
   return (
     <>
       <Swiper
         slidesPerView={4}
-        spaceBetween={30}
+        spaceBetween={10}
         modules={[Pagination]}
         className="mySwiper header__carousel-container"
       >
@@ -19,7 +18,9 @@ const Carrousel = ({ infoHeader }) => {
           infoHeader.length && (
             infoHeader.map((user, index) => (
               <SwiperSlide className="header__slide" key={index}>
-                <img className="header__avatar" src={user.avatar} alt={user.name} />
+                <figure className="header__avatar-container">
+                  <img className="header__avatar" src={user.avatar} alt={user.name} />
+                </figure>
                 <p className="header__name-user">{user.name}</p>
               </SwiperSlide>
 
