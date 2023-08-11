@@ -1,0 +1,76 @@
+@import "../../assets/variables.scss";
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    background-image: url("/images/footer.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+
+    &__left-side-container,
+    &__center-container,
+    &__right-side-container {
+        width: 100%;
+    }
+
+    &__left-side-container,
+    &__right-side-container {
+        display: flex;
+        justify-content: space-around;
+        padding: 0.7rem;
+    }
+
+    &__center-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__icon-container {
+        position: absolute;
+        bottom: 15px;
+        background-color: $light-red;
+        border-radius: 50%;
+        padding: 0.5rem;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    &__plus-icon {
+        width: 40px;
+        filter: invert(99%) sepia(5%) saturate(3%) hue-rotate(325deg) brightness(103%) contrast(100%);
+    }
+
+    &__icon,
+    &__user-icon {
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+    }
+
+    &__icon {
+        filter: invert(99%) sepia(5%) saturate(3%) hue-rotate(325deg) brightness(103%) contrast(100%);
+    }
+
+    &__user-icon {
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    &__background {
+        background-color: $light-red;
+        position: absolute;
+        bottom: 0;
+        height: 5px;
+        width: 100vw;
+        z-index: -1;
+    }
+
+
+
+}
