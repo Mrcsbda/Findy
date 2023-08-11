@@ -26,20 +26,18 @@ const Login = () => {
           </div>
           <hr />
         </section>
-        <button>Iniciar Sesión</button>
-        <div>
+        <button className='login__btn-submit'>Iniciar Sesión</button>
+        <div className='login__separated-container'>
           <hr />
-          <p>Puedes iniciar sesión usando</p>
+          <p>0</p>
           <hr />
         </div>
-        <figure>
-          <img src="" alt="" />
-          <img src="" alt="" />
-          <img src="" alt="" />
+        <figure className='login__networks-container'>
+          <img className='login__network-icon' src="/images/facebook.svg" alt="facebook icon" />
+          <img className='login__network-icon' src="/images/gmail.svg" alt="gmail icon" />
+          <img className='login__network-icon' src="/images/twitter.svg" alt="twitter icon" />
         </figure>
-        <figure>
-          <img src="" alt="" />
-        </figure>
+
       </form>
 
     </main>

@@ -23,18 +23,18 @@
     }
 
     &__title {
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.7rem;
     }
 
     &__container {
         width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 0.3rem;
-        margin-bottom: 1rem;
+        gap: 0.2rem;
+        margin-bottom: 1.3rem;
 
         hr {
-            border: 1px solid rgb(192, 192, 192);
+            border: 1px solid $gray;
             border-bottom: none;
         }
     }
@@ -64,6 +64,48 @@
         border: none;
         outline: none;
         padding: 0.5rem 0.2rem;
-        font-size: 17px;
+    }
+
+    &__btn-submit {
+        padding: 0.7rem 1.2rem;
+        margin: 0.5rem 0 0.7rem 0;
+        background-color: #FF7674;
+        color: white;
+        font-weight: 600;
+        border: none;
+        border-radius: 10px;
+        letter-spacing: 1px;
+        cursor: pointer;
+    }
+
+    &__separated-container {
+        display: flex;
+        width: 100%;
+        gap: 0.5rem;
+        align-items: center;
+        margin-bottom: 0.7rem;
+
+        hr {
+            width: 100%;
+            height: 0.5px;
+            border: 1px solid $gray;
+            border-bottom: none;
+        }
+
+        p {
+            color: $gray;
+        }
+    }
+
+    &__networks-container {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    &__network-icon {
+        width: 2rem;
+        height: 2rem;
+        filter: invert(48%) sepia(93%) saturate(495%) hue-rotate(312deg) brightness(115%) contrast(102%);
     }
 }
