@@ -9,11 +9,12 @@ import Post from '../pages/post/Post'
 import { initialUser, userReducer } from '../reducer/userReducer'
 import Layout from '../pages/layout/Layout'
 import { getSession } from '../services/storageService'
+import NewPublication from '../pages/newPublication/main.jsx'
 
 export const AppContext = createContext({})
 
 const Router = () => {
-    
+
     const [userLogin, userDispatch] = useReducer(userReducer, initialUser)
     const globalState = {
         user: {
@@ -21,6 +22,7 @@ const Router = () => {
             userDispatch
         }
     }
+
 
     useEffect(() => {
         const user = getSession()
@@ -50,6 +52,7 @@ const Router = () => {
                                     <Route index element={<Profile />} />
                                     <Route path=':idPost' element={<Post />} />
                                 </Route>
+                                <Route path='newPub' element={<NewPublication />} />
                             </Route>
                         </Route>
                     </Route>
