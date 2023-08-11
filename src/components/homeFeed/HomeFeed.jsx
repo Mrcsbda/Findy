@@ -25,9 +25,7 @@ const HomeFeed = () => {
 
       return post
     }).sort((a, b) => a.time - b.time).reverse()
-
     setPosts(postsWithUser)
-    console.log(posts)
   }
 
   return (
