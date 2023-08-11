@@ -3,6 +3,7 @@ import { getUsers } from '../../services/userServices'
 import { getAllPosts } from '../../services/postService'
 import CardPost from '../cardPost/CardPost'
 import "./homeFeed.scss"
+import { getSession } from '../../services/storageService'
 
 const HomeFeed = () => {
 
@@ -15,7 +16,9 @@ const HomeFeed = () => {
   const getData = async () => {
     const postsInfo = await getAllPosts()
     const usersInfo = await getUsers()
-    const postsWithUser = postsInfo.map(post => {
+    const userLogged = getSession()
+    const postFiltered = postsInfo.filter(post => userLogged.following.includes(post.userId) || post.userId === userLogged.id)
+    const postsWithUser = postFiltered.map(post => {
       usersInfo.forEach(user => {
         if (user.id === post.userId) {
           post.name = user.name

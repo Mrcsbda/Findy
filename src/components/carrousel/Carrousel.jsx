@@ -26,7 +26,7 @@ const Carrousel = () => {
     ]
 
     data.forEach(user => {
-      if (user.id !== userLogged.id) {
+      if (user.id !== userLogged.id && userLogged.following.includes(user.id)) {
         usersInfo.push({
           avatar: user.avatar,
           name: user.name,
@@ -49,8 +49,8 @@ const Carrousel = () => {
           users.length && (
             users.map((user, index) => (
               <SwiperSlide className="header__slide" key={index}>
-                <figure className="header__avatar-container">
-                  <img className="header__avatar" src={user.avatar} alt={user.name} />
+                <figure className={`header__avatar-container ${index === 0 ? "header__user-logged" : ""}`}>
+                  <img className={`header__avatar ${index === 0 ? "header__user-logged--avatar" : ""}`} src={user.avatar} alt={user.name} />
                 </figure>
                 <p className="header__name-user">{user.name}</p>
               </SwiperSlide>

@@ -59,6 +59,25 @@
         border-radius: 50%;
     }
 
+
+    &__user-logged::before {
+        content: "";
+        width: 4rem;
+        height: 4rem;
+        z-index: 100;
+        position: absolute;
+        border-radius: 50%;
+        background-image: url("images/plus.svg");
+        background-size: 2rem;
+        background-repeat: no-repeat;
+        background-position: center;
+        filter: invert(96%) sepia(0%) saturate(7477%) hue-rotate(172deg) brightness(105%) contrast(105%);
+    }
+
+    &__user-logged--avatar {
+        filter: brightness(70%);
+    }
+
     &__name-user {
         font-family: $balasamiq-sans;
         font-size: 12px;
