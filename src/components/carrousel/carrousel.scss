@@ -1,0 +1,51 @@
+@import "../../assets/variables.scss";
+
+.swiper {
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem 1rem;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.header {
+    &__slide {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    &__avatar {
+        max-width: 5rem;
+        max-height: 4rem;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    &__name-user {
+        font-family: $balasamiq-sans;
+        font-size: 12px;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
