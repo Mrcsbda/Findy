@@ -1,8 +1,12 @@
 import React from 'react'
+import "./profile.scss"
 
 const Profile = () => {
   return (
-    <div>Profile</div>
+    <div>
+      <div className='profile__portrait'><figure></figure></div>
+
+    </div>
   )
 }
 
