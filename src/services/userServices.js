@@ -2,7 +2,7 @@ import { endpoints } from "./data";
 import axios from "axios";
 
 export const get_users = async(id) =>{
-    const {data} = axios.get(`${endpoints.user} / ${id}`)
+    const {data} = axios.get(`${endpoints.user}/${id}`)
     return data
 }
 
