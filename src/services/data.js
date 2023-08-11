@@ -5,7 +5,5 @@ export const endpoints = {
     posts: `${URL_API}posts`,
     comments: `${URL_API}comments`,
     usersWithPosts: `${URL_API}users?_embed=posts`,
-    user: (username, password)=> {
-        return `${URL_API}users?username=${username}&password=${password}`
-    }
+
 }

@@ -1,9 +1,9 @@
 import React from 'react'
 
-const CardPost = ({user}) => {
-  return (
-    <div>CardPost</div>
-  )
+const CardPost = ({ post }) => {
+    return (
+        <div>CardPost</div>
+    )
 }
 
 export default CardPost
