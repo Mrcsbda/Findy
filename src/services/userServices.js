@@ -12,8 +12,8 @@ export const getUser = async (username, password) => {
 
 export const getInfoUser = async (id) => {
     try {
-        const { data } = await axios.get(`${endpoints.users}/${id}`)
-        return data
+        const  response  = await axios.get(`${endpoints.users}/${id}`)
+        return response
     } catch (error) {
         return null
     }
