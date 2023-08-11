@@ -14,10 +14,9 @@ const Login = () => {
   const navigate = useNavigate()
 
   const onSubmit = async (data) => {
-    console.log(data)
     try {
       const dataUser = await getUser(data.username, data.password)
-      console.log(dataUser)
+
       if (dataUser) {
         Swal.fire(
           `Bienvenido! ${dataUser.name}`,
