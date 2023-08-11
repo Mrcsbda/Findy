@@ -69,7 +69,7 @@
     &__btn-submit {
         padding: 0.7rem 1.2rem;
         margin: 0.5rem 0 0.7rem 0;
-        background-color: #FF7674;
+        background-color: $light-red;
         color: white;
         font-weight: 600;
         border: none;
@@ -108,4 +108,15 @@
         height: 2rem;
         filter: invert(48%) sepia(93%) saturate(495%) hue-rotate(312deg) brightness(115%) contrast(102%);
     }
+}
+
+#swal2-title {
+    font-family: $baloo-thambi-2;
+    line-height: 2rem;
+}
+
+.swal2-confirm {
+    font-family: $baloo-thambi-2;
+    background-color: $light-red !important;
+    box-shadow: none !important;
 }
