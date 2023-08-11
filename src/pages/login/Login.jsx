@@ -1,10 +1,54 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./login.scss"
+import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router'
+import Swal from 'sweetalert2'
+import { saveSession } from '../../services/storageService'
+import { AppContext } from '../../router/Router'
+import { getUser } from '../../services/userServices'
 
 const Login = () => {
+
+  const { register, handleSubmit, formState: { errors } } = useForm()
+  const { user: { userDispatch } } = useContext(AppContext)
+  const navigate = useNavigate()
+
+  const onSubmit = async (data) => {
+    console.log(data)
+    try {
+      const dataUser = await getUser(data.username, data.password)
+      console.log(dataUser)
+      if (dataUser) {
+        Swal.fire(
+          `Bienvenido! ${dataUser.name}`,
+          '',
+          'success'
+        ).then(() => {
+          userDispatch({
+            type: "login",
+            payload: {
+              isAuthenticated: true,
+              user: dataUser
+            }
+          })
+          navigate("/")
+          saveSession(dataUser)
+        })
+      } else {
+        Swal.fire(
+          'Ooopss!',
+          'Información incorrecta!',
+          'error'
+        )
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <main className='login'>
-      <form className='login__form'>
+      <form className='login__form' onSubmit={handleSubmit(onSubmit)}>
         <h1 className='login__title'>Iniciar Sesión</h1>
         <section className='login__container'>
           <label className='login__label' htmlFor="username">Usuario</label>
@@ -12,7 +56,12 @@ const Login = () => {
             <figure className='login__icon-form-container'>
               <img className='login__icon-form' src="/images/user.svg" alt="user icon" />
             </figure>
-            <input className='login__input' id="username" type="text" placeholder='Digita tu usuario'/>
+            <input
+              className='login__input'
+              id="username"
+              type="text"
+              placeholder='Digita tu usuario'
+              {...register("username", { required: true })} />
           </div>
           <hr />
         </section>
@@ -22,7 +71,12 @@ const Login = () => {
             <figure className='login__icon-form-container'>
               <img className='login__icon-form' src="/images/padlock.svg" alt="padlock icon" />
             </figure>
-            <input className='login__input' id="password" type="text" placeholder='Digita tu contraseña'/>
+            <input
+              className='login__input'
+              id="password"
+              type="password"
+              placeholder='Digita tu contraseña'
+              {...register("password", { required: true })} />
           </div>
           <hr />
         </section>
