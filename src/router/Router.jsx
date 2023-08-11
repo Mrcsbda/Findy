@@ -23,7 +23,6 @@ const Router = () => {
         }
     }
 
-
     useEffect(() => {
         const user = getSession()
         if (user?.name) {
