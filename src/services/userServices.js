@@ -2,8 +2,15 @@ import { endpoints } from "./data";
 import axios from "axios";
 
 export const getUsers = async(id) =>{
-    const {data} = axios.get(`${endpoints.users}/${id}`)
-    return data
+    try {
+        const response = axios.get(`${endpoints.users}/${id}`)
+        
+        return response
+    } catch (error) {
+        console.log(error);
+        return error
+    }
+   
 }
 
 export const getUser = async (username, password) => {
