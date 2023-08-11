@@ -11,4 +11,59 @@
     font-family: $baloo-thambi-2;
     background: rgb(255, 188, 116);
     background: linear-gradient(114deg, rgba(255, 188, 116, 1) 39%, rgba(255, 118, 116, 1) 60%);
+
+    &__form {
+        background-color: white;
+        padding: 2.4rem;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    }
+
+    &__title {
+        margin-bottom: 0.5rem;
+    }
+
+    &__container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        margin-bottom: 1rem;
+
+        hr {
+            border: 1px solid rgb(192, 192, 192);
+            border-bottom: none;
+        }
+    }
+
+    &__label {
+        font-size: 18px;
+    }
+
+    &__input-container {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        gap: 0.5rem;
+    }
+
+    &__icon-form-container {
+        display: flex;
+    }
+
+    &__icon-form {
+        width: 1.3rem;
+        height: 1.3rem;
+        filter: invert(79%) sepia(39%) saturate(6894%) hue-rotate(316deg) brightness(101%) contrast(99%);
+    }
+
+    &__input {
+        border: none;
+        outline: none;
+        padding: 0.5rem 0.2rem;
+        font-size: 17px;
+    }
 }
