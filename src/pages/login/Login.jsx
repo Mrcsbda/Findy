@@ -3,26 +3,28 @@ import "./login.scss"
 
 const Login = () => {
   return (
-    <main>
-      <form>
-        <h1>iniciar Sesión</h1>
+    <main className='login'>
+      <form className='login__form'>
+        <h1>Iniciar Sesión</h1>
         <section>
-          <label htmlFor="username"></label>
+          <label htmlFor="username">Usuario</label>
           <div>
             <figure>
               <img src="" alt="" />
             </figure>
             <input id="username" type="text" />
           </div>
+          <hr />
         </section>
         <section>
-          <label htmlFor="password"></label>
+          <label htmlFor="password">Contraseña</label>
           <div>
             <figure>
               <img src="" alt="" />
             </figure>
             <input id="password" type="text" />
           </div>
+          <hr />
         </section>
         <button>Iniciar Sesión</button>
       </form>

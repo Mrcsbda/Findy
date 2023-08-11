@@ -1,0 +1,14 @@
+@import "../../assets/reset.scss";
+@import "../../assets/variables.scss";
+
+.login {
+    min-height: 100vh;
+    max-height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    font-family: $baloo-thambi-2;
+    background: rgb(255, 188, 116);
+    background: linear-gradient(114deg, rgba(255, 188, 116, 1) 39%, rgba(255, 118, 116, 1) 60%);
+}
