@@ -27,3 +27,12 @@ export const getUsers = async () => {
         return null
     }
 }
+
+export const updateUser = async (id, propertyName) => {
+    try {
+        const { data } = await axios.patch(`${endpoints.users}/${id}`, {...propertyName} )
+        return data
+    } catch (error) {
+        return null
+    }
+}

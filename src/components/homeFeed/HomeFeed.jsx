@@ -8,10 +8,20 @@ import { getSession } from '../../services/storageService'
 const HomeFeed = () => {
 
   const [posts, setPosts] = useState([])
+  const [user, setUser] = useState({})
+  const [isInteracting, setIsInteracting] = useState(false)
 
   useEffect(() => {
     getData()
-  }, [])
+
+  }, [isInteracting])
+
+  const cardPostProps = {
+    user,
+    isInteracting,
+    setIsInteracting
+  }
+
 
   const getData = async () => {
     try {
@@ -29,7 +39,9 @@ const HomeFeed = () => {
 
         return post
       }).sort((a, b) => a.time - b.time).reverse()
+      setUser(userLogged)
       setPosts(postsWithUser)
+      console.log("home feed")
     } catch (error) {
 
     }
@@ -40,7 +52,7 @@ const HomeFeed = () => {
       {
         posts.length && (
           posts.map((post, i) => (
-            <CardPost key={i} post={post} />
+            <CardPost key={i} post={post} cardPostProps={cardPostProps} />
           ))
         )
       }
