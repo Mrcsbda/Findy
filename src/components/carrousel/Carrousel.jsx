@@ -40,7 +40,7 @@ const Carrousel = () => {
   return (
     <>
       <Swiper
-        slidesPerView={4}
+        slidesPerView={5}
         spaceBetween={10}
         modules={[Pagination]}
         className="mySwiper header__carousel-container"
