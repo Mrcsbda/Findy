@@ -2,16 +2,19 @@ import React, { useEffect, useState } from 'react'
 import "./profile.scss"
 import { getInfoUser } from '../../services/userServices'
 import { NavLink } from 'react-router-dom'
+import { getPosts } from '../../services/postService'
 
-const Profile = () => {
+const Profile = ({idUser}) => {
   const [currentUser, setCurrentUser] = useState(false)
   const [followers, setFollowers] = useState([])
-
+  const [posts, setPosts] = useState(false)
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const  {data}  = await getInfoUser(1)
+        const  {data}  = await getInfoUser(idUser)
+        const  post = await getPosts(idUser)
         setCurrentUser(data)
+        setPosts(post)
         setFollowers(data.followers)
       }
       catch (error) {
@@ -22,6 +25,9 @@ const Profile = () => {
     fetchUser()
   }, [])
 
+  useEffect(() => {
+    
+  }, [])
 
   return (
     <>
@@ -66,7 +72,16 @@ const Profile = () => {
               </div>
               </section>
               <section className='profile__post'>
-                {currentUser.posts}
+                {
+                posts ? 
+                posts.map((post)=> (
+                  <figure>
+                    <img src={post.media} alt="post_media" />
+                  </figure>
+                ))
+                :
+                <div><p>El usuario no tiene publicaciones ...</p></div>
+                }
               </section>
             </section>
 

@@ -48,7 +48,10 @@ const Router = () => {
                             <Route path='/' element={<Layout />}>
                                 <Route path='/' element={<Feed />} />
                                 <Route path=':idProfile/'>
-                                    <Route index element={<Profile />} />
+                                    <Route index element={<Profile />}>
+                                        <Route path=':idProfile/:category' />
+                                    </Route>
+
                                     <Route path=':idPost' element={<Post />} />
                                 </Route>
                                 <Route path='newPub' element={<NewPublication />} />
