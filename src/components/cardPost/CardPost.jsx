@@ -22,9 +22,9 @@ const CardPost = ({ post, cardPostProps: { user , isInteracting , setIsInteracti
 
         if (user.likesStore.includes(postId)) {
             const findIndexInPost = postLikes.findIndex(userId => userId === user.id)
-            const newPostLikes = postLikes.splice(findIndex, 1)
+            const newPostLikes = postLikes.splice(findIndexInPost, 1)
             const findIndexInUser = likesStore.findIndex(element => element === postId)
-            const newPostLiked = likesStore.splice(findIndex, 1)
+            const newPostLiked = likesStore.splice(findIndexInUser, 1)
         } else {
             postLikes.push(user.id)
             likesStore.push(postId)
