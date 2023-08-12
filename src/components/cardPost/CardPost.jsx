@@ -1,12 +1,23 @@
 import React from 'react'
 import "./cardPost.scss"
+import { useNavigate } from 'react-router-dom'
 
 const CardPost = ({ post }) => {
+    const navigate = useNavigate()
 
     console.log(post)
+
+    const goToProfile = (userId)=> {
+        navigate(`${userId}`)
+    }
+
+    const goToComments = (userId, postId)=> {
+        navigate(`${userId}/${postId}`)
+    }
+
     return (
         <article className='home-feed__card'>
-            <section className='home-feed__user-info'>
+            <section className='home-feed__user-info' onClick={()=> goToProfile(post.userId)}>
                 <figure className='home-feed__avatar-container'>
                     <img className='home-feed__avatar' src={post.avatar} alt={post.name} />
                 </figure>
@@ -21,7 +32,7 @@ const CardPost = ({ post }) => {
                         <img className='home-feed__icon' src="/images/heart.svg" alt="heart icon" />
                         <figcaption className='home-feed__icon-description'>{post.likes.length}</figcaption>
                     </figure>
-                    <figure className='home-feed__icon-container'>
+                    <figure className='home-feed__icon-container' onClick={()=> goToComments(post.userId, post.id)}>
                         <img className='home-feed__icon' src="/images/comment.svg" alt="comment icon" />
                         <figcaption className='home-feed__icon-description'>{post.comments.length}</figcaption>
                     </figure>
@@ -34,7 +45,8 @@ const CardPost = ({ post }) => {
                     <img className='home-feed__icon-save' src="/images/save.svg" alt="save icon" />
                 </figure>
             </section>
-            <p className='home-feed__post-description'><strong>{post.name} </strong>{post.caption}</p>
+            <p className='home-feed__post-description'>
+                <strong onClick={()=> goToProfile(post.userId)}>{post.name} </strong>{post.caption}</p>
         </article>
     )
 }
