@@ -13,7 +13,7 @@ const Footer = () => {
   return (
     <footer className='footer'>
       <section className='footer__left-side-container'>
-        <Link>
+        <Link to="/">
           <img src="/images/home.svg" alt="home icon" className='footer__icon' />
         </Link>
         <img src="/images/search.svg" alt="" className='footer__icon' />
@@ -25,7 +25,7 @@ const Footer = () => {
       </section>
       <section className='footer__right-side-container'>
         <img src="/images/bell.svg" alt="" className='footer__icon'/>
-        <Link>
+        <Link to={`/${user.id}`}>
           <img src={user.avatar} alt="" className='footer__user-icon' />
         </Link>
       </section>

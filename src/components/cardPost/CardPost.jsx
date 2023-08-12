@@ -1,11 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./cardPost.scss"
 import { useNavigate } from 'react-router-dom'
+import { getSession } from '../../services/storageService'
 
 const CardPost = ({ post }) => {
     const navigate = useNavigate()
+    const [user, setUser] = useState()
 
-    console.log(post)
+    useEffect(()=> {
+        getUser()
+    },[])
+
+    const getUser = ( ) => {
+        const userLogged = getSession()
+        console.log(userLogged)
+        setUser(userLogged)
+    }
 
     const goToProfile = (userId)=> {
         navigate(`${userId}`)
