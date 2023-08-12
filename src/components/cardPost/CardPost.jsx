@@ -50,6 +50,32 @@ const CardPost = ({ post, cardPostProps: { user, isInteracting, setIsInteracting
         setIsInteracting(!isInteracting)
     }
 
+    const handleSave = async (postId) => {
+        const postStore = [...user.postStore]
+
+        if (user.postStore.includes(postId)) {
+            console.log(postStore)
+            const findIndexInUser = postStore.findIndex(element => element === postId)
+            const newPostLiked = postStore.splice(findIndexInUser, 1)
+        } else {
+            console.log(postStore)
+            postStore.push(postId)
+        }
+
+        console.log(postStore)
+
+        const propertyNameUser = {
+            postStore,
+        }
+
+        await updateUser(user.id, propertyNameUser)
+        saveSession({
+            ...user,
+            postStore,
+        })
+        setIsInteracting(!isInteracting)
+    }
+
     return (
         <article className='home-feed__card'>
             <section className='home-feed__user-info' onClick={() => goToProfile(post.userId)}>
@@ -66,9 +92,17 @@ const CardPost = ({ post, cardPostProps: { user, isInteracting, setIsInteracting
                     <figure className='home-feed__icon-container'>
                         {
                             user.likesStore.includes(post.id) ? (
-                                <img className='home-feed__icon home-feed__icon-full' src="/images/heart-full.svg" alt="heart icon" onClick={() => handleLike(post.id)} />
+                                <img
+                                    className='home-feed__icon home-feed__icon-full'
+                                    src="/images/heart-full.svg"
+                                    alt="heart icon"
+                                    onClick={() => handleLike(post.id)} />
                             ) : (
-                                <img className='home-feed__icon' src="/images/heart.svg" alt="heart icon" onClick={() => handleLike(post.id)} />
+                                <img
+                                    className='home-feed__icon'
+                                    src="/images/heart.svg"
+                                    alt="heart icon"
+                                    onClick={() => handleLike(post.id)} />
                             )
                         }
                         <figcaption className='home-feed__icon-description'>{post.likes.length}</figcaption>
@@ -83,7 +117,21 @@ const CardPost = ({ post, cardPostProps: { user, isInteracting, setIsInteracting
                     </figure>
                 </div>
                 <figure className='home-feed__icon-save-container'>
-                    <img className='home-feed__icon-save' src="/images/save.svg" alt="save icon" />
+                    {
+                        user.postStore.includes(post.id) ? (
+                            <img
+                                className='home-feed__icon-save home-feed__icon-full'
+                                src="/images/save-full.svg"
+                                alt="save icon"
+                                onClick={() => handleSave(post.id)} />
+                        ) : (
+                            <img
+                                className='home-feed__icon-save'
+                                src="/images/save.svg"
+                                alt="save icon"
+                                onClick={() => handleSave(post.id)} />
+                        )
+                    }
                 </figure>
             </section>
             <p className='home-feed__post-description'>
