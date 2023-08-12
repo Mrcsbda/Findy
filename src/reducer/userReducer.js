@@ -1,5 +1,5 @@
 export const initialUser = {
-  isAuthenticated: true,
+  isAuthenticated: false,
   user: null
 }
 

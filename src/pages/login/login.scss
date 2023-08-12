@@ -1,0 +1,122 @@
+@import "../../assets/reset.scss";
+@import "../../assets/variables.scss";
+
+.login {
+    min-height: 100vh;
+    max-height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    font-family: $baloo-thambi-2;
+    background: rgb(255, 188, 116);
+    background: linear-gradient(114deg, rgba(255, 188, 116, 1) 39%, rgba(255, 118, 116, 1) 60%);
+
+    &__form {
+        background-color: white;
+        padding: 2.4rem;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    }
+
+    &__title {
+        margin-bottom: 0.7rem;
+    }
+
+    &__container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+        margin-bottom: 1.3rem;
+
+        hr {
+            border: 1px solid $gray;
+            border-bottom: none;
+        }
+    }
+
+    &__label {
+        font-size: 18px;
+    }
+
+    &__input-container {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        gap: 0.5rem;
+    }
+
+    &__icon-form-container {
+        display: flex;
+    }
+
+    &__icon-form {
+        width: 1.3rem;
+        height: 1.3rem;
+        filter: invert(79%) sepia(39%) saturate(6894%) hue-rotate(316deg) brightness(101%) contrast(99%);
+    }
+
+    &__input {
+        border: none;
+        outline: none;
+        padding: 0.5rem 0.2rem;
+    }
+
+    &__btn-submit {
+        padding: 0.7rem 1.2rem;
+        margin: 0.5rem 0 0.7rem 0;
+        background-color: $light-red;
+        color: white;
+        font-weight: 600;
+        border: none;
+        border-radius: 10px;
+        letter-spacing: 1px;
+        cursor: pointer;
+    }
+
+    &__separated-container {
+        display: flex;
+        width: 100%;
+        gap: 0.5rem;
+        align-items: center;
+        margin-bottom: 0.7rem;
+
+        hr {
+            width: 100%;
+            height: 0.5px;
+            border: 1px solid $gray;
+            border-bottom: none;
+        }
+
+        p {
+            color: $gray;
+        }
+    }
+
+    &__networks-container {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    &__network-icon {
+        width: 2rem;
+        height: 2rem;
+        filter: invert(48%) sepia(93%) saturate(495%) hue-rotate(312deg) brightness(115%) contrast(102%);
+    }
+}
+
+#swal2-title {
+    font-family: $baloo-thambi-2;
+    line-height: 2rem;
+}
+
+.swal2-confirm {
+    font-family: $baloo-thambi-2;
+    background-color: $light-red !important;
+    box-shadow: none !important;
+}

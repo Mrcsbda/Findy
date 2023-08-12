@@ -1,0 +1,27 @@
+
+.header {
+    display: flex;
+    flex-direction: column;
+
+    &__logo-icons-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    &__logo {
+        width: 190px;
+    }
+
+    &__icons-container {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+    }
+
+    &__icon {
+        width: 27.119px;
+    }
+}

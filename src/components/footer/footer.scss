@@ -1,0 +1,125 @@
+@import "../../assets/variables.scss";
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: sticky;
+  bottom: 0;
+  width: 100vw;
+  //background-image: url("/images/footer.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+
+  &__left-side-container,
+  &__center-container,
+  &__right-side-container {
+    width: 100%;
+  }
+
+  &__left-side-container,
+  &__right-side-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 0.7rem;
+  }
+
+  &__center-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__icon-container {
+    position: absolute;
+    bottom: 15px;
+    background-color: $light-red;
+    border-radius: 50%;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &__plus-icon {
+    width: 10vw;
+    max-width: 40px;
+    filter: invert(99%) sepia(5%) saturate(3%) hue-rotate(325deg)
+      brightness(103%) contrast(100%);
+  }
+
+  &__icon,
+  &__user-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+
+  &__icon {
+    filter: invert(99%) sepia(5%) saturate(3%) hue-rotate(325deg)
+      brightness(103%) contrast(100%);
+  }
+
+  &__user-icon {
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  &__background {
+    // background-color: $light-red;
+    position: absolute;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    z-index: -1;
+    display: flex;
+    //  border: 1px red solid;
+    justify-content: space-between;
+    &__left {
+      width: 43.8%;
+      height: 50px;
+      max-width: 700px;
+      background-color: $light-red;
+      border-radius: 0px 60px 0 0;
+      position: relative;
+      right: 0;
+      z-index: -3;
+      //border: 1px red solid;
+    }
+    &__right {
+      width: 44%;
+      height: 50px;
+      max-width: 700px;
+      background-color: $light-red;
+      border-radius: 60px 0px 0 0px;
+      position: relative;
+      left: 0;
+      z-index: -3;
+     // border: 1px red solid;
+    }
+    &__center {
+      width: 18%;
+      height: 20px;
+      background-color: #fff;
+    // border: 1px red solid;
+     // border-radius: 50px 50px 0px 0px;
+      position: absolute;
+      right: 41.2%;
+      bottom: 0;
+      z-index: -2;
+      background-color: $light-red;
+      &::before {
+        content: "";
+        position: absolute;
+        top: -25px; /* Ajusta esto para controlar la altura del efecto */
+        left: 0;
+        right: 0;
+        height: 38px; /* Ajusta esto para controlar la altura del efecto */
+        background-color: #fff;
+       // border: 1px red solid;
+        border-radius: 0px 0px 92px 100px; /* Border radius hacia adentro */
+        z-index: -1; /* Asegura que el pseudo-elemento esté detrás del contenido */
+      }
+    }
+  }
+}
