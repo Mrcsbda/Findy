@@ -4,12 +4,13 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  position: sticky;
+  position: fixed;
   bottom: 0;
   width: 100vw;
   //background-image: url("/images/footer.png");
   background-size: 100%;
   background-repeat: no-repeat;
+  z-index: 200;
 
   &__left-side-container,
   &__center-container,
