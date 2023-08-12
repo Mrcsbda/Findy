@@ -41,7 +41,6 @@ const HomeFeed = () => {
       }).sort((a, b) => a.time - b.time).reverse()
       setUser(userLogged)
       setPosts(postsWithUser)
-      console.log("home feed")
     } catch (error) {
 
     }

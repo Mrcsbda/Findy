@@ -5,7 +5,7 @@ import { updatePost } from '../../services/postService'
 import { updateUser } from '../../services/userServices'
 import { saveSession } from '../../services/storageService'
 
-const CardPost = ({ post, cardPostProps: { user , isInteracting , setIsInteracting } }) => {
+const CardPost = ({ post, cardPostProps: { user, isInteracting, setIsInteracting } }) => {
     const navigate = useNavigate()
 
     const goToProfile = (userId) => {
@@ -29,6 +29,9 @@ const CardPost = ({ post, cardPostProps: { user , isInteracting , setIsInteracti
             postLikes.push(user.id)
             likesStore.push(postId)
         }
+
+        console.log(postLikes)
+        console.log(likesStore)
 
         const propertyNamePost = {
             likes: postLikes
@@ -61,7 +64,13 @@ const CardPost = ({ post, cardPostProps: { user , isInteracting , setIsInteracti
             <section className='home-feed__post-info-container'>
                 <div className='home-feed__post-info'>
                     <figure className='home-feed__icon-container'>
-                        <img className='home-feed__icon' src="/images/heart.svg" alt="heart icon" onClick={() => handleLike(post.id)} />
+                        {
+                            user.likesStore.includes(post.id) ? (
+                                <img className='home-feed__icon home-feed__icon-full' src="/images/heart-full.svg" alt="heart icon" onClick={() => handleLike(post.id)} />
+                            ) : (
+                                <img className='home-feed__icon' src="/images/heart.svg" alt="heart icon" onClick={() => handleLike(post.id)} />
+                            )
+                        }
                         <figcaption className='home-feed__icon-description'>{post.likes.length}</figcaption>
                     </figure>
                     <figure className='home-feed__icon-container' onClick={() => goToComments(post.userId, post.id)}>
