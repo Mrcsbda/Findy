@@ -84,6 +84,11 @@
 
     &__post-description {
         font-size: 12px;
+        font-weight: 400;
+        
+        strong {
+            font-size: 15px;
+        }
     }
 
 }

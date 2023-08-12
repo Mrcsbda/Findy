@@ -34,7 +34,7 @@ const CardPost = ({ post }) => {
                     <img className='home-feed__icon-save' src="/images/save.svg" alt="save icon" />
                 </figure>
             </section>
-            <p className='home-feed__post-description'><strong>{post.name}</strong>{post.caption}</p>
+            <p className='home-feed__post-description'><strong>{post.name} </strong>{post.caption}</p>
         </article>
     )
 }
