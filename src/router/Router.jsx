@@ -24,6 +24,10 @@ const Router = () => {
     }
 
     useEffect(() => {
+        getUser()
+    }, [])
+
+    const getUser = () => {
         const user = getSession()
         if (user?.name) {
             userDispatch({
@@ -34,7 +38,7 @@ const Router = () => {
                 }
             })
         }
-    }, [])
+    }
 
     return (
         <AppContext.Provider value={globalState}>

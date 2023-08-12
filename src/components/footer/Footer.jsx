@@ -5,11 +5,16 @@ import { getSession } from '../../services/storageService';
 
 const Footer = () => {
   const [user, setUser] = useState({})
+
   useEffect(()=> {
-    const userLogged = getSession()
-    setUser(userLogged)
+    getData()
   },[])
 
+  const getData = () => {
+    const userLogged = getSession()
+    setUser(userLogged)
+  }
+  
   return (
     <footer className='footer'>
       <section className='footer__left-side-container'>

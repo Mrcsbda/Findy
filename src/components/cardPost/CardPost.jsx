@@ -5,15 +5,15 @@ import { getSession } from '../../services/storageService'
 
 const CardPost = ({ post }) => {
     const navigate = useNavigate()
-    const [user, setUser] = useState()
+    const [user, setUser] = useState({})
 
     useEffect(()=> {
         getUser()
+        console.log("carga")
     },[])
 
-    const getUser = ( ) => {
+    const getUser = () => {
         const userLogged = getSession()
-        console.log(userLogged)
         setUser(userLogged)
     }
 
@@ -23,6 +23,24 @@ const CardPost = ({ post }) => {
 
     const goToComments = (userId, postId)=> {
         navigate(`${userId}/${postId}`)
+    }
+
+    const handleLike = (postId) => {
+        const postLikes = [...post.likes];
+        console.log(postId)
+        if(user.likesStore.includes(postId)) {
+            const findIndexInPost = postLikes.findIndex(userId => userId === user.id)
+            const newPostLikes = postLikes.splice(findIndex, 1)
+            const findIndexInUser = user.likesStore.findIndex(element => element === postId)
+            const newPostLiked = user.likesStore.splice(findIndex, 1)
+        } else {
+            postLikes.push(user.id)
+            setUser("hola")
+            console.log(user)
+        }
+
+        console.log(postLikes)
+
     }
 
     return (
@@ -39,7 +57,7 @@ const CardPost = ({ post }) => {
             <section className='home-feed__post-info-container'>
                 <div className='home-feed__post-info'>
                     <figure className='home-feed__icon-container'>
-                        <img className='home-feed__icon' src="/images/heart.svg" alt="heart icon" />
+                        <img className='home-feed__icon' src="/images/heart.svg" alt="heart icon" onClick={()=> handleLike(post.id)}/>
                         <figcaption className='home-feed__icon-description'>{post.likes.length}</figcaption>
                     </figure>
                     <figure className='home-feed__icon-container' onClick={()=> goToComments(post.userId, post.id)}>
