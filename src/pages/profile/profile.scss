@@ -35,6 +35,7 @@
       & img {
         width: 100%;
         height: 100%;
+        object-fit: cover;
       }
     }
   }
@@ -54,7 +55,7 @@
         top right;
     background-size: 100% 100%, 100% 100%;
     background-repeat: no-repeat;
-    padding-bottom: 30px;
+    padding-bottom: 40px;
     & .profile__stats{ 
         display: flex;
         justify-content: space-between;
@@ -83,6 +84,7 @@
             left: 40%;
             top: -42px;
             &>img{
+              object-fit: cover;
                 width: 100%;
                 height: 100%;
                 border-radius: 50%;
@@ -117,18 +119,47 @@
   }
   &__body {
    // display: flex;
-   //border: 1px red solid;
+   //
    border-radius: 25px 25px 0px 0px;
    position: absolute;
-   top: 97%;
+   top: 94%;
    width: 100%;
    padding-top: 20px;
    background-color: #fff;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
     & .profile__typepost{
         display: flex;
        
         justify-content: space-around;
         font-size: calc(14px + 0.3vw);
     }
+    & .profile__posts{
+      // display: grid;
+      // grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      // grid-auto-rows: auto;
+     // border: 1px red solid;
+      width: 100%;
+      //gap: 10px;
+      padding: 20px 10px;
+      align-items: center;
+      margin: 0;
+     //justify-content: center;
+      &__post{
+        border-radius: 8px;
+        //width;
+        height: auto;
+        & > img{
+          border-radius: 8px;
+          object-fit: cover;
+          //height: auto;
+          width: 100%;
+          height: auto;
+          max-height: 100%;
+        }
+      }
+    }
   }
+
 }

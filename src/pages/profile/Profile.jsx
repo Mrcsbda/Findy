@@ -3,6 +3,7 @@ import "./profile.scss"
 import { getInfoUser } from '../../services/userServices'
 import { NavLink } from 'react-router-dom'
 import { getPosts } from '../../services/postService'
+import ImagesProfile from './images/images'
 
 const Profile = ({idUser}) => {
   const [currentUser, setCurrentUser] = useState(false)
@@ -71,18 +72,19 @@ const Profile = ({idUser}) => {
                 Tag
               </div>
               </section>
-              <section className='profile__post'>
+             
                 {
-                posts ? 
-                posts.map((post)=> (
-                  <figure>
-                    <img src={post.media} alt="post_media" />
-                  </figure>
-                ))
+                posts[0]?.media ? 
+                // posts.map((post)=> (
+                //   <figure  className='profile__posts__post'>
+                //     <img src={post?.media} alt="post_media" />
+                //   </figure>
+                // ))
+                <ImagesProfile posts={posts}/>
                 :
                 <div><p>El usuario no tiene publicaciones ...</p></div>
                 }
-              </section>
+             
             </section>
 
           </section>
