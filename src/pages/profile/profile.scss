@@ -11,10 +11,9 @@
     display: flex;
     height: 190px;
     justify-content: space-between;
-    border-radius: 10px 10px 0 0;
+   // border-radius: 10px 10px 0 0;
     padding: 10px 20px 0 20px;
     overflow: hidden;
-    
     &__backButton,
     &__optionButton {
       margin-top: 20px;
@@ -134,6 +133,9 @@
        
         justify-content: space-around;
         font-size: calc(14px + 0.3vw);
+        &__actived{
+          border-bottom: 2px $light-red solid;
+        }
     }
     & .profile__posts{
       // display: grid;

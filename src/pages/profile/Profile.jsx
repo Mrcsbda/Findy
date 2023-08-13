@@ -1,14 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./profile.scss"
 import { getInfoUser } from '../../services/userServices'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import { getPosts } from '../../services/postService'
-import ImagesProfile from './images/images'
+import { AppContext } from "../../router/Router";
+import Swal from 'sweetalert2'
+import PostsProfile from '../../components/media/media'
 
-const Profile = ({idUser}) => {
+
+const Profile = () => {
   const [currentUser, setCurrentUser] = useState(false)
   const [followers, setFollowers] = useState([])
   const [posts, setPosts] = useState(false)
+  const params = useParams()
+  const idUser = params.idProfile
+  const navigate = useNavigate()
+  const { user: { userDispatch } } = useContext(AppContext)
+  const [typeMedia, setMediaType] = useState("photos")
+
+
+  const returnFeed = () => {
+    navigate(`/`)
+  }
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -26,19 +39,52 @@ const Profile = ({idUser}) => {
     fetchUser()
   }, [])
 
-  useEffect(() => {
-    
-  }, [])
+// LOGOUT
+  const handleLogout = () => {
+    userDispatch({ type: 'Logout' });
+    localStorage.clear();
+    navigate(`/`)
+  };
+  const logout = () => {
+    Swal.fire({
+      title: 'Do you want to logout your session?',
+      showCancelButton: true,
+      confirmButtonText: 'Logout!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        handleLogout()
+      }
+    })
+  }
+
+const handleTypePost = (type)=>{
+  switch (type) {
+    case "photos":
+      setMediaType("photos");
+      break;
+    case "videos":
+      setMediaType("videos");
+      break;
+    case "tag":
+      setMediaType("tag");
+      break;
+  }
+}
+
+
+
 
   return (
     <>
       {
+   
         currentUser ?
+
           <section className='profile'>
             <section className='profile__portrait'>
-              <figure className='profile__portrait__backButton'><img src="/images/arrow-left.svg" alt="arrow-left" /></figure>
+              <figure className='profile__portrait__backButton' onClick={returnFeed}><img src="/images/arrow-left.svg" alt="arrow-left" /></figure>
               <figure className='profile__portrait__picture'><img src={currentUser.portrait} alt="user_portrait" /></figure>
-              <figure className='profile__portrait__optionButton'><img src="/images/ellipsis.svg" alt="ellipsis.svg" /></figure>
+              <figure className='profile__portrait__optionButton' onClick={logout}><img src="/images/ellipsis.svg" alt="ellipsis.svg" /></figure>
             </section>
             <section className='profile__header'>
               <article className='profile__stats'>
@@ -62,25 +108,21 @@ const Profile = ({idUser}) => {
             </section>
             <section className='profile__body'>
               <section className='profile__typepost'>
-              <div className='profile__typepost_button'>
+              <div className={`profile__typepost__button ${typeMedia=="photos" && "profile__typepost__actived"}`} onClick={() => handleTypePost("photos")}>
                 Photos
               </div>
-              <div className='profile__typepost_button'>
+              <div className={`profile__typepost__button ${typeMedia=="videos" && "profile__typepost__actived"}`}   onClick={() => handleTypePost("videos")}>
                 Videos
               </div>
-              <div className='profile__typepost_button'>
+              <div className={`profile__typepost__button ${typeMedia=="tag" && "profile__typepost__actived"}`}  onClick={() => handleTypePost("tag")}>
                 Tag
               </div>
               </section>
              
                 {
                 posts[0]?.media ? 
-                // posts.map((post)=> (
-                //   <figure  className='profile__posts__post'>
-                //     <img src={post?.media} alt="post_media" />
-                //   </figure>
-                // ))
-                <ImagesProfile posts={posts}/>
+
+                <PostsProfile posts={posts} typeMedia={typeMedia} idUser={idUser}/>
                 :
                 <div><p>El usuario no tiene publicaciones ...</p></div>
                 }

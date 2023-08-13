@@ -37,3 +37,15 @@ export const updatePost = async (id, propertyName) => {
         return null
     }
 }
+
+export const getTaggedPost = async (userId) => {
+  try {
+    const { data } = await axios.get(endpoints.posts)
+    const taggedData = data.filter(post => post.tag.some(tagUserId => tagUserId == userId));
+    return taggedData
+} catch (error) {
+    console.log(error);
+    return error
+}
+
+}

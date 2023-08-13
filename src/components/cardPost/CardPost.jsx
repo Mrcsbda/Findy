@@ -9,7 +9,7 @@ const CardPost = ({ post, cardPostProps: { user, isInteracting, setIsInteracting
     const navigate = useNavigate()
 
     const goToProfile = (userId) => {
-        navigate(`${userId}`)
+        navigate(`/${userId}`)
     }
 
     const goToComments = (userId, postId) => {
