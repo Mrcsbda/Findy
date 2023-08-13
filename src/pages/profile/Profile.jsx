@@ -88,11 +88,11 @@ const handleTypePost = (type)=>{
             </section>
             <section className='profile__header'>
               <article className='profile__stats'>
-                <div className='profile__stats__container'> <span className='profile__stats__number'>{currentUser.followers.length}</span>
+                <div className='profile__stats__container profile__stats__followers'> <span className='profile__stats__number'>{currentUser.followers.length}</span>
                 <span>Followers</span>
                 </div>
                 <figure><img src={currentUser.avatar} alt="Userimg" /></figure>
-                <div  className='profile__stats__container'><span className='profile__stats__number'>{currentUser.following.length}</span>
+                <div  className='profile__stats__container profile__stats__likes'><span className='profile__stats__number'>{currentUser.following.length}</span>
                 <span>Likes</span>
                  </div>
               </article>
