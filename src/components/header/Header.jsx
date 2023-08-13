@@ -2,7 +2,7 @@ import React from 'react'
 import "./header.scss"
 import Carrousel from '../carrousel/Carrousel'
 
-const Header = ({infoHeader}) => {
+const Header = () => {
   return (
     <header className='header'>
         <section className='header__logo-icons-container'>
@@ -12,7 +12,7 @@ const Header = ({infoHeader}) => {
                 <img className='header__icon' src="/images/messages.svg" alt="messages icon" />
             </figure>
         </section>
-        <Carrousel infoHeader={infoHeader}/>
+        <Carrousel />
     </header>
   )
 }

@@ -1,0 +1,76 @@
+@import "../../assets/reset.scss";
+@import "../../assets/variables.scss";
+
+.publication__container {
+  display: flex;
+  flex-direction: column;
+  font: $balasamiq-sans;
+  padding: 2.5vw;
+  gap: 20px;
+  height: 92.5vh;
+
+  & .header {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    height: 5vh;
+    width: 95vw;
+    justify-content: space-between;
+
+
+    & figure {
+      height: 80%;
+
+      & img {
+        height: 100%;
+      }
+    }
+
+    & h2 {
+
+      width: 50%;
+      height: 100%;
+      font-size: 5.5vw;
+      display: flex;
+      align-items: center;
+    }
+
+    &__share {
+      font-size: 5.5vw;
+      display: flex;
+      align-items: center;
+      color: $gray;
+      font-weight: bold;
+
+      &__activated {
+        color: $light-red;
+
+        font-size: 5.5vw;
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+      }
+    }
+  }
+
+  & .form {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+
+    &__box {
+      font-size: 3.5vw;
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px gray solid;
+      gap: 5px;
+
+
+      &__input {
+        padding: 10px;
+        border: none;
+      }
+    }
+  }
+}
