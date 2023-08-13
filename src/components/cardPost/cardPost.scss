@@ -79,6 +79,10 @@
         cursor: pointer;
     }
 
+    &__icon-full {
+        filter: invert(79%) sepia(22%) saturate(7493%) hue-rotate(312deg) brightness(97%) contrast(107%);
+    }
+
     &__icon-description {
         font-size: 11px;
     }
@@ -89,6 +93,7 @@
 
         strong {
             font-size: 15px;
+            cursor: pointer;
         }
     }
 

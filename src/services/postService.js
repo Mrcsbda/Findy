@@ -18,3 +18,12 @@ export const getAllPosts = async () => {
         return null
     }
 }
+
+export const updatePost = async (id, propertyName) => {
+    try {
+        const { data } = await axios.patch(`${endpoints.posts}/${id}`, {...propertyName} )
+        return data
+    } catch (error) {
+        return null
+    }
+}

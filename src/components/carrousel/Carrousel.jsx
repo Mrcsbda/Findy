@@ -12,29 +12,33 @@ const Carrousel = () => {
   const [users, setUsers] = useState([])
 
   useEffect(() => {
-    getDate()
+    getData()
   }, [])
 
-  const getDate = async () => {
-    const data = await getUsers()
-    const userLogged = getSession()
-    const usersInfo = [
-      {
-        avatar: userLogged.avatar,
-        name: "Tu historia"
-      }
-    ]
+  const getData = async () => {
+    try {
+      const data = await getUsers()
+      const userLogged = getSession()
+      const usersInfo = [
+        {
+          avatar: userLogged.avatar,
+          name: "Tu historia"
+        }
+      ]
 
-    data.forEach(user => {
-      if (user.id !== userLogged.id && userLogged.following.includes(user.id)) {
-        usersInfo.push({
-          avatar: user.avatar,
-          name: user.name,
-        })
-      }
-    })
+      data.forEach(user => {
+        if (user.id !== userLogged.id && userLogged.following.includes(user.id)) {
+          usersInfo.push({
+            avatar: user.avatar,
+            name: user.name,
+          })
+        }
+      })
 
-    setUsers(usersInfo)
+      setUsers(usersInfo)
+    } catch (error) {
+
+    }
   }
 
   return (
