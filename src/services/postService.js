@@ -10,6 +10,15 @@ export const getPosts = async (idUser) => {
   }
 }
 
+export const getAllPosts = async () => {
+  try {
+    const { data } = await axios.get(endpoints.posts)
+    return data
+  } catch (error) {
+    return null
+  }
+}
+
 export const postPost = async (postCont) => {
   try {
     const { status } = await axios.post(endpoints.posts, postCont)

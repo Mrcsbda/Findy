@@ -15,7 +15,7 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     try {
-      const dataUser = await getUser(data.username, data.password)
+      const dataUser = await getUser(data.email, data.password)
 
       if (dataUser) {
         Swal.fire(
@@ -50,17 +50,17 @@ const Login = () => {
       <form className='login__form' onSubmit={handleSubmit(onSubmit)}>
         <h1 className='login__title'>Iniciar Sesión</h1>
         <section className='login__container'>
-          <label className='login__label' htmlFor="username">Usuario</label>
+          <label className='login__label' htmlFor="email">Correo</label>
           <div className='login__input-container'>
             <figure className='login__icon-form-container'>
               <img className='login__icon-form' src="/images/user.svg" alt="user icon" />
             </figure>
             <input
               className='login__input'
-              id="username"
-              type="text"
-              placeholder='Digita tu usuario'
-              {...register("username", { required: true })} />
+              id="email"
+              type="email"
+              placeholder='Digita tu correo'
+              {...register("email", { required: true })} />
           </div>
           <hr />
         </section>

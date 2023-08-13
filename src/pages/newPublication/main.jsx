@@ -9,22 +9,25 @@ import { getSession } from '../../services/storageService'
 const NewPublication = () => {
   const { register, handleSubmit, watch, errors } = useForm()
   const watchFields = watch(["pubType", "pubText", "pubTags"])
-  const [showContainer, setShowContainer] = useState(false)
   const navigate = useNavigate()
   const [publicationType, setPublicationType] = useState("")
   const imageFormat = ["png", "img", "jpg", "jpeg"]
   const videoFormat = ["mp4", "avi", "flv"]
   const [userInfo, setUserInfo] = useState(false)
 
+  //validadores
+  const [showContainer, setShowContainer] = useState(false)
+  const [postStatus, setPostStatus] = useState(false)
+
   let samplePost = {
-    userId: 99,
+    userId: 1,
     image: "",
     caption: "",
     likes: [],
     comments: [],
     tag: [],
     type: "",
-    time: 1691798400000
+    time: 666
   }
 
   //verificacion de usuario
@@ -40,7 +43,7 @@ const NewPublication = () => {
     let formContent = watchFields[0]
     console.log(formContent)
     if ((formContent) && (formContent.includes("https:"))) {
-      if ((formContent.includes("png")) || (formContent.includes("img")) || (formContent.includes("jpg")) || (formContent.includes("jpeg"))) {
+      if ((formContent.includes("png")) || (formContent.includes("img")) || (formContent.includes("jpg")) || (formContent.includes("jpeg")) || (formContent.includes("image")) || (formContent.includes("img"))) {
         setPublicationType("photo")
         setShowContainer(true)
       } else if ((formContent.includes("mp4")) || (formContent.includes("avi")) || (formContent.includes("flv"))) {
@@ -62,22 +65,32 @@ const NewPublication = () => {
     //console.log(data)
     //no se usa porque el boton estab aparte
   }
-
+  //ejecutar al click en compartir
   const onShare = () => {
     samplePost.image = watchFields[0];
     samplePost.caption = watchFields[1];
     let parts = watchFields[2].split(" ");
     samplePost.tag = parts;
     samplePost.type = publicationType;
+    samplePost.time = new Date().getTime()
     console.log(samplePost)
+
+    postToServer(samplePost)
   }
 
+  //peticion asincrona tipo post al servidor
   const postToServer = async (obj) => {
     let status = await postPost(obj)
     console.log(status)
-    //if (status === 201)
-
+    if (status === 201) {
+      setPostStatus(true)
+    } else {
+      setPostStatus(false)
+    }
   }
+
+
+
   return (
 
 

@@ -30,13 +30,52 @@
         flex-direction: column;
         align-items: center;
         gap: 0.5rem;
+        cursor: pointer;
+    }
+
+
+    &__avatar-container {
+        display: flex;
+        width: 4rem;
+        height: 4rem;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    &__avatar-container::after {
+        content: "";
+        width: 4.2rem;
+        height: 4.2rem;
+        background: rgb(255, 118, 130);
+        background: linear-gradient(110deg, rgba(255, 118, 130, 1) 20%, rgba(255, 116, 183, 1) 40%, rgba(255, 116, 252, 1) 60%, rgba(255, 188, 116, 1) 80%);
+        position: absolute;
+        z-index: -1;
+        border-radius: 50%;
     }
 
     &__avatar {
-        max-width: 5rem;
-        max-height: 4rem;
         object-fit: cover;
         border-radius: 50%;
+    }
+
+
+    &__user-logged::before {
+        content: "";
+        width: 4rem;
+        height: 4rem;
+        z-index: 100;
+        position: absolute;
+        border-radius: 50%;
+        background-image: url("images/plus.svg");
+        background-size: 2rem;
+        background-repeat: no-repeat;
+        background-position: center;
+        filter: invert(96%) sepia(0%) saturate(7477%) hue-rotate(172deg) brightness(105%) contrast(105%);
+    }
+
+    &__user-logged--avatar {
+        filter: brightness(70%);
     }
 
     &__name-user {
