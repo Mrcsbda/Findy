@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import "./footer.scss"
 import { Link } from 'react-router-dom';
 import { getSession } from '../../services/storageService';
 
 const Footer = () => {
-  const [user, setUser] = useState({})
-  useEffect(()=> {
-    const userLogged = getSession()
-    setUser(userLogged)
-  },[])
+  const [user, setUser] = useState(getSession())
 
   return (
     <footer className='footer'>
