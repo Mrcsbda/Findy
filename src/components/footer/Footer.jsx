@@ -16,11 +16,13 @@ const Footer = () => {
       </section>
       <section className='footer__center-container'>
         <figure className='footer__icon-container'>
-          <img src="/images/plus.svg" alt="" className='footer__plus-icon' />
+          <Link to="newPub">
+            <img src="/images/plus.svg" alt="" className='footer__plus-icon' />
+          </Link>
         </figure>
       </section>
       <section className='footer__right-side-container'>
-        <img src="/images/bell.svg" alt="" className='footer__icon'/>
+        <img src="/images/bell.svg" alt="" className='footer__icon' />
         <Link to={`/${user.id}`}>
           <img src={user.avatar} alt="" className='footer__user-icon' />
         </Link>

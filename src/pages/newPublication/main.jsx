@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import "./main.scss"
 import backArrow from "../../assets/back-arrow.svg"
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { postPost } from '../../services/postService'
 import { getSession } from '../../services/storageService'
+import Swal from 'sweetalert2'
 
 const NewPublication = () => {
   const { register, handleSubmit, watch, errors } = useForm()
@@ -16,6 +17,7 @@ const NewPublication = () => {
   const [userInfo, setUserInfo] = useState(false)
 
   //validadores
+  const [repeatUser, setRepeatUser] = useState(false)
   const [showContainer, setShowContainer] = useState(false)
   const [postStatus, setPostStatus] = useState(false)
 
@@ -35,7 +37,10 @@ const NewPublication = () => {
     const user = getSession()
     setUserInfo(user)
     console.log(userInfo)
-  }, [])
+    if (userInfo == false) {
+      setRepeatUser(!repeatUser)
+    }
+  }, [repeatUser])
 
   //verificacion del formulario
   useEffect(() => {
@@ -67,6 +72,7 @@ const NewPublication = () => {
   }
   //ejecutar al click en compartir
   const onShare = () => {
+    samplePost.userId = userInfo.id
     samplePost.image = watchFields[0];
     samplePost.caption = watchFields[1];
     let parts = watchFields[2].split(" ");
@@ -76,6 +82,21 @@ const NewPublication = () => {
     console.log(samplePost)
 
     postToServer(samplePost)
+    if (postStatus === true) {
+      Swal.fire(
+        `Se ha publicado con exito`,
+        '',
+        'success'
+      ).then(() => {
+        navigate(-1)
+      })
+    } else {
+      Swal.fire(
+        'Ooopss!',
+        'Hubo un error en la publicacion!',
+        'error'
+      )
+    }
   }
 
   //peticion asincrona tipo post al servidor
@@ -97,7 +118,9 @@ const NewPublication = () => {
     <main className='publication__container'>
       <header className='header'>
         <figure>
-          <img src={backArrow} alt="flecha de atras" />
+          <Link to="/">
+            <img src={backArrow} alt="flecha de atras" />
+          </Link>
         </figure>
         <h2>Nueva publicacion</h2>
         {showContainer ? <p className='header__share__activated' onClick={onShare} >Compartir</p> : <p className='header__share'>Compartir</p>}
@@ -117,7 +140,7 @@ const NewPublication = () => {
         </div>
 
       </form>
-    </main>
+    </main >
 
 
   )
