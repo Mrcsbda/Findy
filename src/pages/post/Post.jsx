@@ -1,8 +1,17 @@
 import React from 'react'
+import "./main.scss"
+import { useParams } from 'react-router-dom'
 
 const Post = () => {
+  let postId = useParams()
+  useEffect(() => {
+    console.log(postId)
+  }, [])
+
   return (
-    <div>Post</div>
+    <main className="post__container">
+      <div className></div>
+    </main>
   )
 }
 

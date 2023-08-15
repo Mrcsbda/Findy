@@ -51,7 +51,7 @@ const NewPublication = () => {
       if ((formContent.includes("png")) || (formContent.includes("img")) || (formContent.includes("jpg")) || (formContent.includes("jpeg")) || (formContent.includes("image")) || (formContent.includes("img"))) {
         setPublicationType("photo")
         setShowContainer(true)
-      } else if ((formContent.includes("mp4")) || (formContent.includes("avi")) || (formContent.includes("flv"))) {
+      } else if ((formContent.includes("mp4")) || (formContent.includes("avi")) || (formContent.includes("flv")) || (formContent.includes("youtube"))) {
         setPublicationType("video")
         setShowContainer(true)
       } else {
@@ -110,11 +110,7 @@ const NewPublication = () => {
     }
   }
 
-
-
   return (
-
-
     <main className='publication__container'>
       <header className='header'>
         <figure>
@@ -125,6 +121,7 @@ const NewPublication = () => {
         <h2>Nueva publicacion</h2>
         {showContainer ? <p className='header__share__activated' onClick={onShare} >Compartir</p> : <p className='header__share'>Compartir</p>}
       </header>
+
       <form onSubmit={handleSubmit(onSubmit)} className='form' >
         <div className='form__box'>
           <label htmlFor="pubType">Agregar contenido</label>
@@ -138,11 +135,8 @@ const NewPublication = () => {
           <label htmlFor="pubTags">Etiquetar personas</label>
           <input className='form__box__input' type="text" placeholder='Etiqueta a tus amigos :D' {...register("pubTags")} />
         </div>
-
       </form>
     </main >
-
-
   )
 }
 
