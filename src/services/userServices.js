@@ -19,6 +19,14 @@ export const getInfoUser = async (id) => {
     }
 }
 
+export const patchInfoUser = async (id, newInf) => {
+    try {
+    await axios.patch(`${endpoints.users}/${id}`, newInf)
+    } catch (error) {
+        return null
+    }
+}
+
 export const getUsers = async () => {
     try {
         const { data } = await axios.get(endpoints.users)
