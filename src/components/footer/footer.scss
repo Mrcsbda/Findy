@@ -54,6 +54,7 @@
     width: 24px;
     height: 24px;
     cursor: pointer;
+   
   }
 
   &__icon {
@@ -64,6 +65,9 @@
   &__user-icon {
     object-fit: cover;
     border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    border: 1px #fff solid;
   }
 
   &__background {
