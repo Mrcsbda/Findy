@@ -36,7 +36,7 @@ const NewPublication = () => {
   useEffect(() => {
     const user = getSession()
     setUserInfo(user)
-    console.log(userInfo)
+    //console.log(userInfo)
     if (userInfo == false) {
       setRepeatUser(!repeatUser)
     }
@@ -46,7 +46,7 @@ const NewPublication = () => {
   useEffect(() => {
     //console.log(watchFields)
     let formContent = watchFields[0]
-    console.log(formContent)
+    //console.log(formContent)
     if ((formContent) && (formContent.includes("https:"))) {
       if ((formContent.includes("png")) || (formContent.includes("img")) || (formContent.includes("jpg")) || (formContent.includes("jpeg")) || (formContent.includes("image")) || (formContent.includes("img"))) {
         setPublicationType("photo")
@@ -58,8 +58,8 @@ const NewPublication = () => {
         setPublicationType("no-identified")
         setShowContainer(false)
       }
-      console.log("tipo", publicationType)
-      console.log("estado de share: ", showContainer)
+      //console.log("tipo", publicationType)
+      //console.log("estado de share: ", showContainer)
     } else {
       setShowContainer(false)
     }
@@ -79,7 +79,7 @@ const NewPublication = () => {
     samplePost.tag = parts;
     samplePost.type = publicationType;
     samplePost.time = new Date().getTime()
-    console.log(samplePost)
+    //console.log(samplePost)
 
     postToServer(samplePost)
     if (postStatus === true) {
@@ -102,7 +102,7 @@ const NewPublication = () => {
   //peticion asincrona tipo post al servidor
   const postToServer = async (obj) => {
     let status = await postPost(obj)
-    console.log(status)
+    //console.log(status)
     if (status === 201) {
       setPostStatus(true)
     } else {
