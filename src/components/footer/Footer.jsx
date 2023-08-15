@@ -41,7 +41,9 @@ const Footer = () => {
       </section>
       <div className='footer__background'>
         <figure className='footer__background__left'></figure>
-        <figure className='footer__background__center'></figure>
+        <figure className='footer__background__center'>
+          <img src="/images/footerCut.png" alt="footer" />
+        </figure>
         <figure className='footer__background__right'></figure>
       </div>
     </footer>
