@@ -5,19 +5,18 @@
   display: flex;
   flex-direction: column;
   font-family: $balasamiq-sans;
-  padding: 2.5vw;
+  padding: 5vw;
   gap: 20px;
   height: 92.5vh;
+  align-items: center;
 
   & .header {
     display: flex;
     flex-direction: row;
-
     align-items: center;
     height: 5vh;
     width: 95vw;
     justify-content: space-between;
-
 
     & figure {
       height: 80%;
@@ -28,7 +27,6 @@
     }
 
     & h2 {
-
       width: 50%;
       height: 100%;
       font-size: 5.5vw;
@@ -45,7 +43,6 @@
 
       &__activated {
         color: $light-red;
-
         font-size: 5.5vw;
         display: flex;
         align-items: center;
@@ -58,6 +55,9 @@
     display: flex;
     flex-direction: column;
     gap: 1vh;
+    width: 70vw;
+    height: 100%;
+    justify-content: center;
 
     &__box {
       font-size: 3.5vw;
@@ -66,10 +66,14 @@
       border-bottom: 1px gray solid;
       gap: 5px;
 
+      & label {
+        text-align: center;
+      }
 
       &__input {
         padding: 10px;
         border: none;
+        text-align: center;
       }
     }
   }

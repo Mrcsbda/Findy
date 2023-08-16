@@ -36,7 +36,7 @@ const NewPublication = () => {
   useEffect(() => {
     const user = getSession()
     setUserInfo(user)
-    console.log(userInfo)
+    //console.log(userInfo)
     if (userInfo == false) {
       setRepeatUser(!repeatUser)
     }
@@ -46,20 +46,20 @@ const NewPublication = () => {
   useEffect(() => {
     //console.log(watchFields)
     let formContent = watchFields[0]
-    console.log(formContent)
+    //console.log(formContent)
     if ((formContent) && (formContent.includes("https:"))) {
       if ((formContent.includes("png")) || (formContent.includes("img")) || (formContent.includes("jpg")) || (formContent.includes("jpeg")) || (formContent.includes("image")) || (formContent.includes("img"))) {
         setPublicationType("photo")
         setShowContainer(true)
-      } else if ((formContent.includes("mp4")) || (formContent.includes("avi")) || (formContent.includes("flv"))) {
+      } else if ((formContent.includes("mp4")) || (formContent.includes("avi")) || (formContent.includes("flv")) || (formContent.includes("youtube"))) {
         setPublicationType("video")
         setShowContainer(true)
       } else {
         setPublicationType("no-identified")
         setShowContainer(false)
       }
-      console.log("tipo", publicationType)
-      console.log("estado de share: ", showContainer)
+      //console.log("tipo", publicationType)
+      //console.log("estado de share: ", showContainer)
     } else {
       setShowContainer(false)
     }
@@ -79,7 +79,7 @@ const NewPublication = () => {
     samplePost.tag = parts;
     samplePost.type = publicationType;
     samplePost.time = new Date().getTime()
-    console.log(samplePost)
+    //console.log(samplePost)
 
     postToServer(samplePost)
     if (postStatus === true) {
@@ -102,7 +102,7 @@ const NewPublication = () => {
   //peticion asincrona tipo post al servidor
   const postToServer = async (obj) => {
     let status = await postPost(obj)
-    console.log(status)
+    //console.log(status)
     if (status === 201) {
       setPostStatus(true)
     } else {
@@ -110,11 +110,7 @@ const NewPublication = () => {
     }
   }
 
-
-
   return (
-
-
     <main className='publication__container'>
       <header className='header'>
         <figure>
@@ -125,6 +121,7 @@ const NewPublication = () => {
         <h2>Nueva publicacion</h2>
         {showContainer ? <p className='header__share__activated' onClick={onShare} >Compartir</p> : <p className='header__share'>Compartir</p>}
       </header>
+
       <form onSubmit={handleSubmit(onSubmit)} className='form' >
         <div className='form__box'>
           <label htmlFor="pubType">Agregar contenido</label>
@@ -138,11 +135,8 @@ const NewPublication = () => {
           <label htmlFor="pubTags">Etiquetar personas</label>
           <input className='form__box__input' type="text" placeholder='Etiqueta a tus amigos :D' {...register("pubTags")} />
         </div>
-
       </form>
     </main >
-
-
   )
 }
 
