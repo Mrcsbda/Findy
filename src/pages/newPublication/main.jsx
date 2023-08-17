@@ -23,7 +23,7 @@ const NewPublication = () => {
 
   let samplePost = {
     userId: 1,
-    image: "",
+    media: "",
     caption: "",
     likes: [],
     comments: [],
@@ -73,7 +73,7 @@ const NewPublication = () => {
   //ejecutar al click en compartir
   const onShare = () => {
     samplePost.userId = userInfo.id
-    samplePost.image = watchFields[0];
+    samplePost.media = watchFields[0];
     samplePost.caption = watchFields[1];
     let parts = watchFields[2].split(" ");
     samplePost.tag = parts;
