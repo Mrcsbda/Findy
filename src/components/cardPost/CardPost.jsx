@@ -13,8 +13,7 @@ const CardPost = ({ post, cardPostProps: { user, isInteracting, setIsInteracting
   }
 
   const goToComments = (userId, postId) => {
-    navigate(`inPost`) //de prueba
-    //navigate(`${userId}/${postId}`)
+    navigate(`${userId}/${postId}`)
   }
 
   const handleLike = async (postId) => {
@@ -30,9 +29,6 @@ const CardPost = ({ post, cardPostProps: { user, isInteracting, setIsInteracting
       postLikes.push(user.id)
       likesStore.push(postId)
     }
-
-    console.log(postLikes)
-    console.log(likesStore)
 
     const propertyNamePost = {
       likes: postLikes
@@ -55,15 +51,12 @@ const CardPost = ({ post, cardPostProps: { user, isInteracting, setIsInteracting
     const postStore = [...user.postStore]
 
     if (user.postStore.includes(postId)) {
-      console.log(postStore)
+
       const findIndexInUser = postStore.findIndex(element => element === postId)
       const newPostLiked = postStore.splice(findIndexInUser, 1)
     } else {
-      console.log(postStore)
       postStore.push(postId)
     }
-
-    console.log(postStore)
 
     const propertyNameUser = {
       postStore,
@@ -86,7 +79,7 @@ const CardPost = ({ post, cardPostProps: { user, isInteracting, setIsInteracting
         <p className='home-feed__user-name'>{post.name}</p>
       </section>
       <figure className='home-feed__post-container'>
-        <img className='home-feed__post' src={post.media} alt={`${post.name}' post`} />
+        <img className='home-feed__post' src={post.media} alt={`${post.name}' post`} onClick={() => goToComments(post.userId, post.id)}/>
       </figure>
       <section className='home-feed__post-info-container'>
         <div className='home-feed__post-info'>

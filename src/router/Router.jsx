@@ -48,9 +48,8 @@ const Router = () => {
             <Route element={<PrivateRouter isAuthenticated={userLogin.isAuthenticated} />}>
               <Route path='/' element={<Layout />}>
                 <Route path='/' element={<Feed />} />
-                <Route path='/:idProfile' element={<Profile />}>
-                  <Route path=':idPost' element={<Post />} />
-                </Route>
+                <Route path=':idProfile' element={<Profile />}/>
+                <Route path=':idProfile/:idPost' element={<Post />} />
                 <Route path='newPub' element={<NewPublication />} />
                 <Route path='inPost' element={<Post />} /> //de prueba
               </Route>
