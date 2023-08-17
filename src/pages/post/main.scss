@@ -2,7 +2,149 @@
 @import "../../assets/variables.scss";
 
 .post__container {
-  background-color: red;
-  width: 500px;
-  height: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  background-color: $profile-gray;
+
+  & .post__figure {
+    width: 100vw;
+    position: relative;
+    font-family: $balasamiq-sans;
+
+    &__media {
+      object-fit: cover;
+      width: 97.5%;
+      border-radius: 0px 0px 20px 20px;
+    }
+
+    &__info {
+
+      height: 10vh;
+      width: 60vw;
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      position: absolute;
+      left: 20%;
+      top: 90%;
+      background-color: white;
+      border-radius: 20px;
+      padding: 5px;
+      gap: 20px;
+
+      &__owner {
+        height: 100%;
+        width: 10vh;
+
+        & img {
+          height: 100%;
+          width: 100%;
+          border-radius: 100%;
+          border: $pink solid 2px;
+        }
+      }
+
+      &__extra {
+        display: flex;
+        gap: 5vw;
+        width: 60%;
+        align-items: center;
+        justify-content: end;
+      }
+    }
+  }
+
+  & .post__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1vh 5vw 10vh;
+    gap: 5vh;
+
+    &__write {
+      background-color: transparent;
+      align-self: center;
+      height: 5vh;
+      width: 80vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &__pretext {
+        height: 5vh;
+        width: 5vh;
+
+        & img {
+          height: 100%;
+          width: 100%;
+          border-radius: 100%;
+          object-fit: cover;
+        }
+      }
+
+      &__form {
+        display: flex;
+        background-color: white;
+        width: 90%;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 20px;
+        padding: 0px 10px;
+
+        & button {
+          width: 5vh;
+          background-color: transparent;
+          border: none;
+
+          & img {
+            width: 100%;
+          }
+        }
+
+        & input {
+          width: 80%;
+          height: 100%;
+          border: none;
+        }
+      }
+    }
+
+    &__comments {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 90vw;
+
+      & .comments__box {
+        display: flex;
+        background-color: white;
+        padding: 2vw;
+        border-radius: 20px;
+
+        &__figure {
+          width: 20%;
+          border-radius: 100%;
+
+
+          & img {
+            width: 5vh;
+            height: 5vh;
+            object-fit: fill;
+            border-radius: 100%;
+          }
+        }
+
+        &__description {
+          width: 80%;
+          display: flex;
+          flex-direction: column;
+
+          & .description__user {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
 }

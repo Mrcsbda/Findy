@@ -52,6 +52,7 @@ const Router = () => {
                   <Route path=':idPost' element={<Post />} />
                 </Route>
                 <Route path='newPub' element={<NewPublication />} />
+                <Route path='inPost' element={<Post />} /> //de prueba
               </Route>
             </Route>
           </Route>
