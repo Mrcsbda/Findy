@@ -18,6 +18,19 @@
       border-radius: 0px 0px 20px 20px;
     }
 
+    &__back {
+      //position: absolute;
+      height: 5vh;
+      width: 5vh;
+      position: absolute;
+      top: 10%;
+      left: 5%;
+
+      & img {
+        width: 100%;
+      }
+    }
+
     &__info {
 
       height: 10vh;
@@ -27,21 +40,19 @@
       justify-content: start;
       position: absolute;
       left: 20%;
-      top: 90%;
+      top: 85%;
       background-color: white;
       border-radius: 20px;
       padding: 5px;
-      gap: 20px;
-      border: yellow solid 1px;
+      gap: 5px;
 
       & p {
-        border: purple solid 1px;
+        font-weight: bold;
       }
 
       &__owner {
         height: 8vh;
-        width: 40%;
-        border: red solid 1px;
+        width: 8vh;
 
         & img {
           height: 100%;
@@ -57,7 +68,6 @@
         width: 60%;
         align-items: center;
         justify-content: end;
-        border: blue solid 1px;
       }
     }
   }
