@@ -99,36 +99,43 @@ const NewPublication = () => {
     //no se usa porque el boton estab aparte
   }
   //ejecutar al click en compartir
-  const onShare = () => {
+  const onShare = async () => {
     samplePost.userId = userInfo.id
     samplePost.media = watchFields[0];
     samplePost.caption = watchFields[1];
     samplePost.type = publicationType;
     samplePost.time = new Date().getTime()
 
-    let parts = watchFields[2].split(" ");
-    let parts2 = parts.map((element) => usersInfo.map((element2) => (element == element2.username) && (element2.id)
-
-    ))
+    let tageados = watchFields[2].split(" ");
+    let usuarios = usersInfo
+    let parts2 = []
+    //let parts2 = parts.map((element) => usersInfo.map((element2) => (element == element2.username) && (element2.id)))
+    tageados.forEach(element => {
+      usuarios.forEach(element2 => {
+        if ((element === element2.username)) {
+          parts2.push(element2.id)
+        }
+      })
+    });
     samplePost.tag = parts2;
     //console.log(samplePost)
 
-    postToServer(samplePost)
-    if (postStatus === true) {
-      Swal.fire(
-        `Se ha publicado con exito`,
-        '',
-        'success'
-      ).then(() => {
-        navigate(-1)
-      })
-    } else {
-      Swal.fire(
-        'Ooopss!',
-        'Hubo un error en la publicacion!',
-        'error'
-      )
-    }
+    await postToServer(samplePost)
+    // if (postStatus === true) {
+    //   Swal.fire(
+    //     `Se ha publicado con exito`,
+    //     '',
+    //     'success'
+    //   ).then(() => {
+    //     navigate(-1)
+    //   })
+    // } else {
+    //   Swal.fire(
+    //     'Ooopss!',
+    //     'Hubo un error en la publicacion!',
+    //     'error'
+    //   )
+    // }
   }
 
   //peticion asincrona tipo post al servidor
@@ -137,8 +144,20 @@ const NewPublication = () => {
     //console.log(status)
     if (status === 201) {
       setPostStatus(true)
+      Swal.fire(
+        `Se ha publicado con exito`,
+        '',
+        'success'
+      ).then(() => {
+        navigate(-1)
+      })
     } else {
       setPostStatus(false)
+      Swal.fire(
+        'Ooopss!',
+        'Hubo un error en la publicacion!',
+        'error'
+      )
     }
   }
 
@@ -165,7 +184,7 @@ const NewPublication = () => {
         </div>
         <div className='form__box'>
           <label htmlFor="pubTags">Etiquetar personas</label>
-          <input className='form__box__input' type="text" placeholder='Etiqueta a tus amigos :D' {...register("pubTags")} />
+          <input className='form__box__input' type="text" placeholder='Etiqueta a tus amigos :D (username)' {...register("pubTags")} />
         </div>
       </form>
     </main >
