@@ -6,6 +6,7 @@ import { useNavigate, Link } from 'react-router-dom'
 import { postPost } from '../../services/postService'
 import { getSession } from '../../services/storageService'
 import Swal from 'sweetalert2'
+import { getUsers } from '../../services/userServices'
 
 const NewPublication = () => {
   const { register, handleSubmit, watch, errors } = useForm()
@@ -20,6 +21,11 @@ const NewPublication = () => {
   const [repeatUser, setRepeatUser] = useState(false)
   const [showContainer, setShowContainer] = useState(false)
   const [postStatus, setPostStatus] = useState(false)
+
+  //datos de todos los usuarios para el tag
+  const [repeatProcess2, setRepeatProcess2] = useState(false)
+  const [showContainer2, setShowContainer2] = useState(false)
+  const [usersInfo, setUsersInfo] = useState(false)
 
   let samplePost = {
     userId: 1,
@@ -66,6 +72,28 @@ const NewPublication = () => {
   }, [watchFields])
 
 
+  useEffect(() => {
+    if (showContainer2) {
+      //console.log("info de todos: ", usersInfo)
+    } else {
+      receiveUsers()
+      setRepeatProcess2(!repeatProcess2)
+    }
+  }, [repeatProcess2])
+
+
+  const receiveUsers = async (ownerId) => {
+    let infoUsers = await getUsers()
+    if (infoUsers.length > 0) {
+      //console.log(infoUser.status)
+      setUsersInfo(infoUsers)
+      setShowContainer2(true)
+    } else {
+      setShowContainer2(false)
+    }
+  }
+
+
   const onSubmit = (data) => {
     //console.log(data)
     //no se usa porque el boton estab aparte
@@ -75,10 +103,14 @@ const NewPublication = () => {
     samplePost.userId = userInfo.id
     samplePost.media = watchFields[0];
     samplePost.caption = watchFields[1];
-    let parts = watchFields[2].split(" ");
-    samplePost.tag = parts;
     samplePost.type = publicationType;
     samplePost.time = new Date().getTime()
+
+    let parts = watchFields[2].split(" ");
+    let parts2 = parts.map((element) => usersInfo.map((element2) => (element == element2.username) && (element2.id)
+
+    ))
+    samplePost.tag = parts2;
     //console.log(samplePost)
 
     postToServer(samplePost)
