@@ -32,10 +32,16 @@
       border-radius: 20px;
       padding: 5px;
       gap: 20px;
+      border: yellow solid 1px;
+
+      & p {
+        border: purple solid 1px;
+      }
 
       &__owner {
-        height: 100%;
-        width: 10vh;
+        height: 8vh;
+        width: 40%;
+        border: red solid 1px;
 
         & img {
           height: 100%;
@@ -51,6 +57,7 @@
         width: 60%;
         align-items: center;
         justify-content: end;
+        border: blue solid 1px;
       }
     }
   }

@@ -70,7 +70,6 @@ const Post = () => {
     }
   }, [repeatProcess2])
 
-
   const receivePost = async (idtoSearch) => {
     //let server = await getIndividualPost(idtoSearch)
     let server = await getIndividualPostWithMessages(idtoSearch)
