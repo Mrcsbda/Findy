@@ -11,6 +11,7 @@
 .profile {
   font-family: $balasamiq-sans;
     position: relative;
+    
   &__portrait {
     position: relative;
     display: flex;
@@ -146,6 +147,7 @@
    display: flex;
    flex-direction: column;
    justify-content: center;
+   padding-bottom: 100px;
     & .profile__typepost{
         display: flex;
        

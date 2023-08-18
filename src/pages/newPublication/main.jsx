@@ -176,7 +176,7 @@ const NewPublication = () => {
       <form onSubmit={handleSubmit(onSubmit)} className='form' >
         <div className='form__box'>
           <label htmlFor="pubType">Agregar contenido</label>
-          <input className='form__box__input' type="url" placeholder='enlace de la imagen o video' {...register("pubType")} />
+          <input className='form__box__input' type="url" placeholder='Enlace de la imagen o video' {...register("pubType")} />
         </div>
         <div className='form__box'>
           <label htmlFor="pubText">Agregar descripcion</label>
@@ -184,7 +184,7 @@ const NewPublication = () => {
         </div>
         <div className='form__box'>
           <label htmlFor="pubTags">Etiquetar personas</label>
-          <input className='form__box__input' type="text" placeholder='Etiqueta a tus amigos :D (username)' {...register("pubTags")} />
+          <input className='form__box__input' type="text" placeholder='Etiqueta a tus amigos por su username' {...register("pubTags")} />
         </div>
       </form>
     </main >

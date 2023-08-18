@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import backArrow from "../../assets/back-arrow.svg"
+
 import sendAlt from "../../assets/send-alt.svg"
-import defaultProfile from "../../assets/profile-default.svg"
+
 
 import "./main.scss"
 
-import { getInfoUser } from '../../services/userServices'
 import { getUsers } from '../../services/userServices'
 import { getSession } from '../../services/storageService'
 
-import { getIndividualPost } from '../../services/postService'
+
 import { getIndividualPostWithMessages } from '../../services/postService'
 
 import { postComment } from '../../services/commentService'
@@ -23,7 +22,7 @@ const Post = () => {
   let postId = useParams()
   let newPostId = Number(postId.idPost);
   const navigate = useNavigate()
-  const { register, handleSubmit, watch, errors, reset } = useForm()
+  const { register, handleSubmit, reset } = useForm()
 
   const [showContainer, setShowContainer] = useState(false)
   const [showContainer2, setShowContainer2] = useState(false)
@@ -89,7 +88,7 @@ const Post = () => {
     }
   }
 
-  const receiveUsers = async (ownerId) => {
+  const receiveUsers = async () => {
     let infoUsers = await getUsers()
     if (infoUsers.length > 0) {
       //console.log(infoUser.status)
@@ -182,7 +181,7 @@ const Post = () => {
           <figure className='post__figure'>
             <img src={postContent.media} alt="imagen del post" className='post__figure__media' />
             <figure className='post__figure__back' onClick={onBackPage}>
-              <img src={backArrow} alt="" />
+              <img src='/images/arrow-left.svg' alt="" />
             </figure>
             <div className='post__figure__info' >
               <figure className='post__figure__info__owner' >
@@ -194,13 +193,13 @@ const Post = () => {
                   {
                     (userInfo.likesStore).includes(postContent.id) ? (
                       <img
-                        className='home-feed__icon home-feed__icon-full'
+                        className='post__icon home-feed__icon-full'
                         src="/images/heart-full.svg"
                         alt="heart icon"
                       />
                     ) : (
                       <img
-                        className='home-feed__icon'
+                        className='post__icon'
                         src="/images/heart.svg"
                         alt="heart icon"
                       />
@@ -210,7 +209,7 @@ const Post = () => {
                 </figure>
 
                 <figure className='home-feed__icon-container'>
-                  <img className='home-feed__icon' src="/images/comment.svg" alt="comment icon" />
+                  <img className='post__icon' src="/images/comment.svg" alt="comment icon" />
                   <figcaption className='home-feed__icon-description'>{postContent.comments.length}</figcaption>
                 </figure>
               </div>
