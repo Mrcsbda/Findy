@@ -54,7 +54,7 @@ const NewPublication = () => {
     let formContent = watchFields[0]
     //console.log(formContent)
     if ((formContent) && (formContent.includes("https:"))) {
-      if ((formContent.includes("png")) || (formContent.includes("img")) || (formContent.includes("jpg")) || (formContent.includes("jpeg")) || (formContent.includes("image")) || (formContent.includes("img"))) {
+      if ((formContent.includes("png")) || (formContent.includes("Png")) || (formContent.includes("img")) || (formContent.includes("Img")) || (formContent.includes("jpg")) || (formContent.includes("Jpg")) || (formContent.includes("jpeg")) || (formContent.includes("Jpeg")) || (formContent.includes("image")) || (formContent.includes("Image")) || (formContent.includes("img")) || (formContent.includes("Img"))) {
         setPublicationType("photo")
         setShowContainer(true)
       } else if ((formContent.includes("mp4")) || (formContent.includes("avi")) || (formContent.includes("flv")) || (formContent.includes("youtube"))) {
@@ -121,27 +121,12 @@ const NewPublication = () => {
     //console.log(samplePost)
 
     await postToServer(samplePost)
-    // if (postStatus === true) {
-    //   Swal.fire(
-    //     `Se ha publicado con exito`,
-    //     '',
-    //     'success'
-    //   ).then(() => {
-    //     navigate(-1)
-    //   })
-    // } else {
-    //   Swal.fire(
-    //     'Ooopss!',
-    //     'Hubo un error en la publicacion!',
-    //     'error'
-    //   )
-    // }
   }
 
   //peticion asincrona tipo post al servidor
   const postToServer = async (obj) => {
     let status = await postPost(obj)
-    //console.log(status)
+    console.log("estatus del post ", status)
     if (status === 201) {
       setPostStatus(true)
       Swal.fire(
