@@ -53,7 +53,7 @@ const NewPublication = () => {
     //console.log(watchFields)
     let formContent = watchFields[0]
     //console.log(formContent)
-    if ((formContent) && (formContent.includes("https:"))) {
+    if ((formContent)) {
       if ((formContent.includes("png")) || (formContent.includes("Png")) || (formContent.includes("img")) || (formContent.includes("Img")) || (formContent.includes("jpg")) || (formContent.includes("Jpg")) || (formContent.includes("jpeg")) || (formContent.includes("Jpeg")) || (formContent.includes("image")) || (formContent.includes("Image")) || (formContent.includes("img")) || (formContent.includes("Img"))) {
         setPublicationType("photo")
         setShowContainer(true)
