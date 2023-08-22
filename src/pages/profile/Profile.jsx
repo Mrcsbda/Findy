@@ -55,9 +55,9 @@ const Profile = () => {
   };
   const logout = () => {
     Swal.fire({
-      title: 'Do you want to logout your session?',
+      title: '¿Quieres cerrar sesión?',
       showCancelButton: true,
-      confirmButtonText: 'Logout!'
+      confirmButtonText: 'Cerrar sesión!'
     }).then((result) => {
       if (result.isConfirmed) {
         handleLogout()

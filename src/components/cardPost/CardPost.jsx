@@ -1,4 +1,3 @@
-import React from 'react'
 import "./cardPost.scss"
 import { useNavigate } from 'react-router-dom'
 import { updatePost } from '../../services/postService'
